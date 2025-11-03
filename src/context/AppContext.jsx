@@ -5,11 +5,14 @@ const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
   const user = dummyData.users[0];
+  const [isDark, setIsDark] = useState(localStorage.getItem("isDark") || false);
 
   return (
     <AppContext.Provider
       value={{
         user,
+        isDark,
+        setIsDark,
       }}
     >
       {children}
