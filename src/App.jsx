@@ -1,14 +1,14 @@
+import { Outlet, useLocation } from 'react-router-dom';
 import './App.css'
 import Header from './components/Header';
-import { useAppContext } from './context/AppContext'
 
 function App() {
-  const {user} = useAppContext();
-  console.log(user)
+  const location = useLocation();
+  const shouldShowHeader = location.pathname !== '/login';
   return (
     <>
-    <p className='bg-orange-500'></p>
-      <Header />
+      {shouldShowHeader&&<Header />}
+      <Outlet/>
     </>
   )
 }

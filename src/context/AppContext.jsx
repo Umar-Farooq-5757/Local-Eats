@@ -6,6 +6,7 @@ const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
   const user = dummyData.users[0];
   const [isDark, setIsDark] = useState(localStorage.getItem("isDark") || false);
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false)
 
   return (
     <AppContext.Provider
@@ -13,6 +14,8 @@ export const AppContextProvider = ({ children }) => {
         user,
         isDark,
         setIsDark,
+        isProfileDropdownOpen,
+        setIsProfileDropdownOpen,
       }}
     >
       {children}
