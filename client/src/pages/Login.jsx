@@ -7,10 +7,10 @@ import Seller from "../components/auth/Seller";
 const Login = () => {
   const [selectedTab, setSelectedTab] = useState({
     role: "customer",
-    method: "signup",
+    method: "login",
   });
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center min-h-screen bg-[#d8d8d8]">
       <section className="bg-[#e8e8e8] px-16 pt-2 h-[85vh] w-2/5 rounded-lg shadow-md border border-gray-200">
         {/* LOGO AND TITLE */}
         <div className="flex justify-center items-center flex-col gap-3">

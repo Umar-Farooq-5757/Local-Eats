@@ -13,7 +13,7 @@ const ProfileDropdown = () => {
   return createPortal(
     <div
       onClick={() => setIsProfileDropdownOpen(false)}
-      className={`fixed top-16 bottom-0 left-0 right-0 transition-all ${
+      className={`fixed top-16 bottom-0 left-0 right-0 transition-all select-none ${
         isProfileDropdownOpen ? "" : "-translate-y-[1000px]"
       }`}
     >
@@ -29,7 +29,7 @@ const ProfileDropdown = () => {
         </div>
         <div className="mt-32">
           {/* TOGGLE THEME */}
-          <div onClick={()=>{setIsDark(!isDark);localStorage.setItem('isDark',!isDark)}} className="select-none flex items-center gap-2 hover:bg-gray-100 cursor-pointer transition-all rounded-md w-full pl-1 py-1.5 my-1">
+          <div onClick={()=>{setIsDark(!isDark);localStorage.setItem('isDark',!isDark)}} className="flex items-center gap-2 hover:bg-gray-100 cursor-pointer transition-all rounded-md w-full pl-1 py-1.5 my-1">
             {isDark ? <Sun className="size-5" /> : <Moon className="size-5" />}
             <p>Toggle theme</p>
           </div>
