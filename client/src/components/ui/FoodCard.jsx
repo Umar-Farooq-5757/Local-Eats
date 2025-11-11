@@ -1,10 +1,7 @@
-import React from "react";
-
-const FoodCard = ({ index, style, item }) => {
+const FoodCard = ({  item }) => {
   return (
     <div
-      key={item.id}
-      className="food hover:bg-white border-gray-300 min-h-64 max-h-72 w-fit p-3 justify-self-center hover:shadow-lg border hover:border-gray-300 rounded-sm transition-all"
+      className="food hover:bg-white border-gray-300 min-h-64 max-h-72 w-fit p-3 justify-self-center hover:shadow-lg border hover:border-[#ea580c] rounded-sm transition-all"
     >
       <img
         loading="lazy"

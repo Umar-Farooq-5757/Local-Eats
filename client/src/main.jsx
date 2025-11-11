@@ -6,6 +6,7 @@ import { AppContextProvider } from "./context/AppContext.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login.jsx";
 import Home from "./pages/Home.jsx";
+import SellerDashboard from "./pages/SellerDashboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/dashboard",
+        element: <SellerDashboard />,
       },
     ]
   }

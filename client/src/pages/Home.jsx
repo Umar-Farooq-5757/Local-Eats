@@ -1,9 +1,12 @@
 import { MoveRight } from "lucide-react";
-// import { FixedSizeGrid } from 'react-window';
 import dummyData from "../../data";
 import FoodCard from "../components/ui/FoodCard";
+import RestaurantCard from "../components/ui/RestaurantCard";
+import { useState } from "react";
+import Dropdown from "../components/ui/Dropdown";
 
 const Home = () => {
+  const [foodsView, setFoodsView] = useState(false);
   const scrollDown = () => {
     window.scrollBy({
       top: 865,
@@ -29,16 +32,30 @@ const Home = () => {
         </button>
       </div>
       {/* Boundary */}
-      <div className="bg-[#ffa778] w-[95vw] mx-auto h-0.5"></div>
-      {/* FOODS */}
-      <h1 className="text-3xl font-semibold mx-16 mt-4">Foods for you</h1>
+      <div className="bg-[#ffd2b9] w-[95vw] mx-auto h-0.5"></div>
+      {/* FOODS / Restaurants */}
+      <div className="flex items-center justify-between mt-4 px-20 pr-32">
+        <h1 className="text-3xl font-semibold">
+          {foodsView ? "Foods for you" : "Restaurants for you"}
+        </h1>
+        <Dropdown foodsView={foodsView} setFoodsView={setFoodsView} />
+      </div>
       <div className="h-[1000px] mt-4 px-16 py-2 grid grid-cols-3 justify-center gap-6">
-        {/* FODO CARD */}
-        {dummyData.items.map((item) => {
-          return (
-            <FoodCard key={item.id} item={item}/>
-          );
-        })}
+        {foodsView ? (
+          <>
+            {/* FODO CARD */}
+            {dummyData.items.map((item) => {
+              return <FoodCard key={item.id} item={item} />;
+            })}
+          </>
+        ) : (
+          <>
+            {/* Restaurant CARD */}
+            {dummyData.restaurants.map((restaurant) => {
+              return <RestaurantCard key={restaurant.id} restaurant={restaurant} />;
+            })}
+          </>
+        )}
       </div>
     </main>
   );
