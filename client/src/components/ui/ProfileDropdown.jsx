@@ -1,8 +1,11 @@
 import { createPortal } from "react-dom";
 import { useAppContext } from "../../context/AppContext";
 import { User, LogOut, Sun, Moon } from "lucide-react";
+import { LayoutDashboard } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ProfileDropdown = () => {
+  const navigate = useNavigate()
   const {
     isProfileDropdownOpen,
     setIsProfileDropdownOpen,
@@ -27,9 +30,21 @@ const ProfileDropdown = () => {
           </div>
           <p className="text-[16px]">{user.name}</p>
         </div>
-        <div className="mt-32">
+        <div className="mt-24">
+          <div onClick={()=>{navigate('/dashboard');setIsProfileDropdownOpen(false)}} className="flex items-center gap-2 hover:bg-gray-100 cursor-pointer transition-all rounded-md w-full pl-1 py-1.5 my-1">
+            <div>
+              <LayoutDashboard className="size-5" />
+            </div>
+            <p>Dashboard</p>
+          </div>
           {/* TOGGLE THEME */}
-          <div onClick={()=>{setIsDark(!isDark);localStorage.setItem('isDark',!isDark)}} className="flex items-center gap-2 hover:bg-gray-100 cursor-pointer transition-all rounded-md w-full pl-1 py-1.5 my-1">
+          <div
+            onClick={() => {
+              setIsDark(!isDark);
+              localStorage.setItem("isDark", !isDark);
+            }}
+            className="flex items-center gap-2 hover:bg-gray-100 cursor-pointer transition-all rounded-md w-full pl-1 py-1.5 my-1"
+          >
             {isDark ? <Sun className="size-5" /> : <Moon className="size-5" />}
             <p>Toggle theme</p>
           </div>
