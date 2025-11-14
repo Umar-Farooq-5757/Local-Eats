@@ -7,7 +7,7 @@ import { useAppContext } from "../context/AppContext";
 
 const Home = () => {
   const {dummyData} = useAppContext()
-  const [foodsView, setFoodsView] = useState(false);
+  const [view, setView] = useState("Restaurants");
   const scrollDown = () => {
     window.scrollBy({
       top: 865,
@@ -37,12 +37,12 @@ const Home = () => {
       {/* FOODS / Restaurants */}
       <div className="flex items-center justify-between mt-10 px-20 pr-32">
         <h1 className="text-3xl font-semibold">
-          {foodsView ? "Foods for you" : "Restaurants for you"}
+          {view=="Foods" ? "Foods for you" : "Restaurants for you"}
         </h1>
-        <Dropdown foodsView={foodsView} setFoodsView={setFoodsView} />
+        <Dropdown state={view} setState={setView} />
       </div>
       <div className="h-[1000px] mt-4 px-16 py-2 grid grid-cols-3 justify-center gap-6">
-        {foodsView ? (
+        {view=="Foods" ? (
           <>
             {/* FODO CARD */}
             {dummyData.items.map((item) => {
