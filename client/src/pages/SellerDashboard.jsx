@@ -10,11 +10,12 @@ import {
   Hourglass,
 } from "lucide-react";
 import Dropdown from "../components/ui/Dropdown";
+import EditModal from "../components/ui/EditModal";
 // design inspiration
 // https://www.figma.com/design/T6h90aSafWM85PglHzMsZG/CRM-Dashboard-Customers-List--Community-?node-id=0-1&p=f&t=mzaml4csrAj7FY8w-0
 
 const SellerDashboard = () => {
-  const { dummyData } = useAppContext();
+  const {dummyData,isEditModalOpen, setIsEditModalOpen } = useAppContext();
   const restaurant = dummyData.restaurants[0];
   const [ordersData, setOrdersData] = useState(dummyData.orders);
   const [dropdownValue, setDropdownValue] = useState("All");
@@ -53,7 +54,7 @@ const SellerDashboard = () => {
               </p>
             </div>
           </div>
-          <div className="absolute top-4 right-6 flex flex-col justify-center items-center gap-1 cursor-pointer">
+          <div onClick={()=>setIsEditModalOpen(true)} className="absolute top-4 right-6 flex flex-col justify-center items-center gap-1 cursor-pointer">
             <SquarePen className="size-5" />
             <p className="text-black/60 text-xs">Edit</p>
           </div>
@@ -100,15 +101,15 @@ const SellerDashboard = () => {
           <Dropdown state={dropdownValue} setState={setDropdownValue} />
         </div>
         {/* Actual Table */}
-        <div className="bg-white mt-1 py-3 px-9 pr-20 min-h-96">
-          <div className="flex justify-between items-center text-sm font-semibold pb-2 text-black/70 border border-b-black/20 border-r-white border-t-white border-l-white">
+        <div className="bg-white mt-1 py-3 px-9  min-h-96">
+          <div className="flex justify-between items-center pr-[68px] text-sm font-semibold pb-2 text-black/60 border border-b-black/20 border-r-white border-t-white border-l-white">
             <p className="mr-10">Customer Name</p>
             <p className="mr-10">Customer Address</p>
             <p className="mr-10">Payment</p>
             <p className="mr-10">Status</p>
           </div>
           {/* Data */}
-          <div className="flex justify-between items-center mt-4 border border-b-black/10 border-t-white border-r-white border-l-white pb-2">
+          <div className="flex justify-start gap-[242px] items-center mt-4 border border-b-black/10 border-t-white border-r-white border-l-white pb-2">
             <p>Umar Farooq</p>
             <p>18G-332, Wah Cantt</p>
             <p className="-translate-x-3">$28.54</p>
@@ -118,12 +119,12 @@ const SellerDashboard = () => {
                 color: colorsForStatus.Completed[1],
                 borderColor: colorsForStatus.Completed[1],
               }}
-              className="-translate-x-5 px-2 rounded-sm border"
+              className="-translate-x-5 px-2 rounded-sm border text-sm"
             >
               Completed
             </p>
           </div>
-          <div className="flex justify-between items-center mt-4 border border-b-black/10 border-t-white border-r-white border-l-white pb-2">
+          <div className="flex justify-start gap-[242px] items-center mt-4 border border-b-black/10 border-t-white border-r-white border-l-white pb-2">
             <p>Umar Farooq</p>
             <p>18G-332, Wah Cantt</p>
             <p className="-translate-x-3">$28.54</p>
@@ -133,12 +134,12 @@ const SellerDashboard = () => {
                 color: colorsForStatus.Pending[1],
                 borderColor: colorsForStatus.Pending[1],
               }}
-              className="-translate-x-5 px-2 rounded-sm border"
+              className="-translate-x-5 px-2 rounded-sm border text-sm"
             >
               Pending
             </p>
           </div>
-          <div className="flex justify-between items-center mt-4 border border-b-black/10 border-t-white border-r-white border-l-white pb-2">
+          <div className="flex justify-start gap-[242px] items-center mt-4 border border-b-black/10 border-t-white border-r-white border-l-white pb-2">
             <p>Umar Farooq</p>
             <p>18G-332, Wah Cantt</p>
             <p className="-translate-x-3">$28.54</p>
@@ -148,12 +149,12 @@ const SellerDashboard = () => {
                 color: colorsForStatus.Completed[1],
                 borderColor: colorsForStatus.Completed[1],
               }}
-              className="-translate-x-5 px-2 rounded-sm border"
+              className="-translate-x-5 px-2 rounded-sm border text-sm"
             >
               Completed
             </p>
           </div>
-          <div className="flex justify-between items-center mt-4 border border-b-black/10 border-t-white border-r-white border-l-white pb-2">
+          <div className="flex justify-start gap-[242px] items-center mt-4 border border-b-black/10 border-t-white border-r-white border-l-white pb-2">
             <p>Umar Farooq</p>
             <p>18G-332, Wah Cantt</p>
             <p className="-translate-x-3">$28.54</p>
@@ -163,12 +164,12 @@ const SellerDashboard = () => {
                 color: colorsForStatus.Pending[1],
                 borderColor: colorsForStatus.Pending[1],
               }}
-              className="-translate-x-5 px-2 rounded-sm border"
+              className="-translate-x-5 px-2 rounded-sm border text-sm"
             >
               Pending
             </p>
           </div>
-          <div className="flex justify-between items-center mt-4 border border-b-black/10 border-t-white border-r-white border-l-white pb-2">
+          <div className="flex justify-start gap-[242px] items-center mt-4 border border-b-black/10 border-t-white border-r-white border-l-white pb-2">
             <p>Umar Farooq</p>
             <p>18G-332, Wah Cantt</p>
             <p className="-translate-x-3">$28.54</p>
@@ -178,13 +179,14 @@ const SellerDashboard = () => {
                 color: colorsForStatus.Pending[1],
                 borderColor: colorsForStatus.Pending[1],
               }}
-              className="-translate-x-5 px-2 rounded-sm border"
+              className="-translate-x-5 px-2 rounded-sm border text-sm"
             >
               Pending
             </p>
           </div>
         </div>
       </div>
+      <EditModal/>
     </section>
   );
 };

@@ -18,7 +18,7 @@ const Customer = ({ selectedTab, setSelectedTab }) => {
                 <Mail className="size-5" />
                 <input
                   className="outline-none grow"
-                  type="text"
+                  type="email"
                   placeholder="(i.e. customer@gmail.com)"
                   name=""
                   autoComplete="off"

@@ -8,13 +8,6 @@ import { useAppContext } from "../context/AppContext";
 const Home = () => {
   const {dummyData} = useAppContext()
   const [view, setView] = useState("Restaurants");
-  const scrollDown = () => {
-    window.scrollBy({
-      top: 865,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
   return (
     <main>
       <div className="flex flex-col items-center justify-center  min-h-[calc(640px+163px)] pb-20 gap-7 px-80 select-none">
@@ -25,15 +18,16 @@ const Home = () => {
           Welcome to Local Eats, the dual-purpose platform designed to bring the
           local food community closer together.
         </p>
-        <button
-          onClick={scrollDown}
+        <a href="#grid">
+          <button
           className="flex justify-between items-center gap-3 cursor-pointer transition-all text-white font-semibold py-2 px-4 shadow-md hover:shadow-2xl rounded-md bg-linear-to-r from-[#ea580c] to-[#f58041] hover:gap-6"
         >
           Get Started <MoveRight />
         </button>
+        </a>
       </div>
       {/* Boundary */}
-      <div className="bg-[#ffd2b9] w-[95vw] mx-auto h-0.5"></div>
+      <div id="grid" className="bg-[#ffd2b9] w-[95vw] mx-auto h-0.5"></div>
       {/* FOODS / Restaurants */}
       <div className="flex items-center justify-between mt-10 px-20 pr-32">
         <h1 className="text-3xl font-semibold">
