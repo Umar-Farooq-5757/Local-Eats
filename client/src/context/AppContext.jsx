@@ -7,7 +7,8 @@ export const AppContextProvider = ({ children }) => {
   const user = dummyData.users[0];
   const [isDark, setIsDark] = useState(localStorage.getItem("isDark") || false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(true)
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isNewFoodModalOpen, setIsNewFoodModalOpen] = useState(true);
 
   return (
     <AppContext.Provider
@@ -19,7 +20,9 @@ export const AppContextProvider = ({ children }) => {
         setIsProfileDropdownOpen,
         dummyData,
         isEditModalOpen,
-        setIsEditModalOpen
+        setIsEditModalOpen,
+        isNewFoodModalOpen,
+        setIsNewFoodModalOpen
       }}
     >
       {children}

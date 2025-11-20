@@ -40,8 +40,8 @@ const ProfileDropdown = () => {
           {/* TOGGLE THEME */}
           <div
             onClick={() => {
-              setIsDark(!isDark);
               localStorage.setItem("isDark", !isDark);
+              setIsDark(!isDark);
             }}
             className="flex items-center gap-2 hover:bg-gray-100 cursor-pointer transition-all rounded-md w-full pl-1 py-1.5 my-1"
           >

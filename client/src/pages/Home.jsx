@@ -10,7 +10,7 @@ const Home = () => {
   const [view, setView] = useState("Restaurants");
   return (
     <main>
-      <div className="flex flex-col items-center justify-center  min-h-[calc(640px+163px)] pb-20 gap-7 px-80 select-none">
+      <div className="flex flex-col items-center justify-center min-h-[calc(640px+163px)] pb-28 gap-7 px-80 select-none">
         <h1 className=" font-bold text-8xl font-mono bg-linear-to-r from-[#ea580c] to-[#ffa676] bg-clip-text text-transparent">
           Local Eats
         </h1>

@@ -8,17 +8,20 @@ import {
   SquarePen,
   BookmarkCheck,
   Hourglass,
+  Plus,
 } from "lucide-react";
 import Dropdown from "../components/ui/Dropdown";
-import EditModal from "../components/ui/EditModal";
+import EditModal from "../components/modals/EditModal";
+import NewFoodModal from "../components/modals/NewFoodModal";
 // design inspiration
 // https://www.figma.com/design/T6h90aSafWM85PglHzMsZG/CRM-Dashboard-Customers-List--Community-?node-id=0-1&p=f&t=mzaml4csrAj7FY8w-0
 
 const SellerDashboard = () => {
-  const {dummyData,isEditModalOpen, setIsEditModalOpen } = useAppContext();
+  const { dummyData, setIsNewFoodModalOpen, setIsEditModalOpen } = useAppContext();
   const restaurant = dummyData.restaurants[0];
   const [ordersData, setOrdersData] = useState(dummyData.orders);
   const [dropdownValue, setDropdownValue] = useState("All");
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 
   const colorsForStatus = {
     // All: ["#eff6ff", "#375dfc"],
@@ -47,21 +50,24 @@ const SellerDashboard = () => {
               </p>
             </div>
             <div className="flex flex-col gap-1">
-              <h3>TO</h3>
+              <h3>To</h3>
               <p className="text-black/75 flex items-center gap-1">
                 <Clock />
                 {restaurant.close_time}
               </p>
             </div>
           </div>
-          <div onClick={()=>setIsEditModalOpen(true)} className="absolute top-4 right-6 flex flex-col justify-center items-center gap-1 cursor-pointer">
+          <div
+            onClick={() => setIsEditModalOpen(true)}
+            className="absolute top-4 right-6 flex flex-col justify-center items-center gap-1 cursor-pointer"
+          >
             <SquarePen className="size-5" />
             <p className="text-black/60 text-xs">Edit</p>
           </div>
         </div>
 
         {/* EXTRA INFO */}
-        <div className="bg-white w-[52vw] relative px-5 py-4 border border-black/10 shadow-xs rounded-md flex items-center justify-between">
+        <div className="bg-white w-[52vw] relative px-5 py-4 border border-black/10 shadow-xs rounded-md flex items-start justify-between">
           {/* TOTAL CUSTOMERS */}
           <div className="flex items-center gap-2">
             <div className="bg-[#ea580c]/20 w-fit border border-[#ea580c]/30 shadow-sm size-16 px-3 rounded-full flex justify-center items-center">
@@ -92,6 +98,24 @@ const SellerDashboard = () => {
               <h2 className="font-bold text-3xl">321</h2>
             </div>
           </div>
+          <button
+            aria-label="Add new food"
+            className="absolute bottom-4 right-6 bg-[#ea580c] text-white rounded-full p-1 cursor-pointer"
+            onMouseEnter={() => setIsTooltipVisible(true)}
+            onMouseLeave={() => setIsTooltipVisible(false)}
+            onClick={()=>setIsNewFoodModalOpen(true)}
+          >
+            <Plus className="size-5" />
+            {isTooltipVisible && (
+              <span
+                role="tooltip"
+                className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1 bg-gray-900 text-white text-sm rounded-md shadow-lg whitespace-nowrap"
+              >
+                Add new food
+                <span className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-gray-900" />
+              </span>
+            )}
+          </button>
         </div>
       </div>
       {/* ORDERS DATA */}
@@ -124,7 +148,7 @@ const SellerDashboard = () => {
               Completed
             </p>
           </div>
-          <div className="flex justify-start gap-[242px] items-center mt-4 border border-b-black/10 border-t-white border-r-white border-l-white pb-2">
+          {/* <div className="flex justify-start gap-[242px] items-center mt-4 border border-b-black/10 border-t-white border-r-white border-l-white pb-2">
             <p>Umar Farooq</p>
             <p>18G-332, Wah Cantt</p>
             <p className="-translate-x-3">$28.54</p>
@@ -183,10 +207,11 @@ const SellerDashboard = () => {
             >
               Pending
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
-      <EditModal/>
+      <EditModal />
+      <NewFoodModal/>
     </section>
   );
 };
