@@ -8,7 +8,7 @@ export const AppContextProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(localStorage.getItem("isDark") || false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [isNewFoodModalOpen, setIsNewFoodModalOpen] = useState(true);
+  const [isNewFoodModalOpen, setIsNewFoodModalOpen] = useState(false);
 
   return (
     <AppContext.Provider
